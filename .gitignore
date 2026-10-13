@@ -1,0 +1,41 @@
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+venv/
+env/
+
+# Env / secrets
+.env
+.env.local
+*.env
+!.env.example
+
+# Node
+node_modules/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+Desktop.ini
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Logs / temp
+*.log
+logs/
+tmp/
+temp/
+.cache/
+
+# Local test artifacts
+backend/.env
+**/tests/__pycache__/
+docs/*.png
+!docs/screenshot*.png

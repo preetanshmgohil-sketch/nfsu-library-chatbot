@@ -1,0 +1,34 @@
+{
+  "version": "1.0.0",
+  "welcome": {
+    "en": "Hello! I am the NFSU Library assistant. Ask me for books, journals, theses, or library services — or tap a suggestion below.",
+    "hi": "नमस्ते! मैं NFSU पुस्तकालय सहायक हूँ। किताबें, पत्रिकाएँ, शोध प्रबंध या पुस्तकालय सेवाओं के बारे में पूछें — या नीचे दिए सुझाव पर टैप करें।"
+  },
+  "suggestions": {
+    "en": [
+      "Find forensic DNA books",
+      "Show books on cybercrime investigation",
+      "Do we have books on forensic toxicology?",
+      "Library timing & rules",
+      "Renew my book",
+      "How do I access ONOS off campus?",
+      "Find theses on digital forensics",
+      "Books on artificial intelligence in criminal investigation"
+    ],
+    "hi": [
+      "फोरेंसिक DNA पर पुस्तकें खोजें",
+      "साइबर अपराध जांच की पुस्तकें",
+      "क्या फोरेंसिक टॉक्सिकोलॉजी पर पुस्तकें हैं?",
+      "पुस्तकालय समय और नियम",
+      "मेरी पुस्तक नवीनीकृत करें",
+      "ऑफ कैंपस पर ONOS कैसे उपयोग करें?",
+      "डिजिटल फोरेंसिक्स पर शोध प्रबंध खोजें",
+      "आपराधिक जांच में कृत्रिम बुद्धिमत्ता पर पुस्तकें"
+    ]
+  },
+  "theme": {
+    "default": "system",
+    "allow_toggle": true,
+    "storage_key": "nfsu-library-chat-theme"
+  }
+}

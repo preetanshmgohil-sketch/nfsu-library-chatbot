@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>National Forensic Sciences University — Library Catalogue</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --crimson: #991b1b;
+      --crimson-600: #b91c1c;
+      --crimson-100: #fee2e2;
+      --navy: #0f172a;
+      --navy-2: #1e293b;
+      --ink: #0f172a;
+      --muted: #64748b;
+      --line: #e2e8f0;
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --teal: #0e7490;
+      --teal-100: #cffafe;
+      --radius: 14px;
+      --shadow: 0 1px 2px rgba(15, 23, 42, 0.05), 0 12px 32px rgba(15, 23, 42, 0.08);
+      --font: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+      --serif: "Source Serif 4", Georgia, serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.55;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    a { color: var(--crimson); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { width: min(1100px, calc(100% - 2.5rem)); margin-inline: auto; }
+
+    /* Utility bar */
+    .utility {
+      background: var(--navy);
+      color: #cbd5e1;
+      font-size: 12.5px;
+      letter-spacing: 0.02em;
+    }
+    .utility .wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.45rem 0;
+      flex-wrap: wrap;
+    }
+    .utility a { color: #e2e8f0; }
+    .utility .mono {
+      font-family: ui-monospace, "Cascadia Mono", monospace;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #94a3b8;
+    }
+
+    /* Masthead */
+    .masthead {
+      background: var(--crimson);
+      color: #fff;
+      box-shadow: 0 8px 24px rgba(153, 27, 27, 0.25);
+    }
+    .masthead .wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.25rem;
+      padding: 1rem 0;
+      flex-wrap: wrap;
+    }
+    .brand { display: flex; align-items: center; gap: 0.9rem; color: #fff; }
+    .brand:hover { text-decoration: none; }
+    .seal {
+      width: 48px; height: 48px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      display: grid; place-items: center;
+      font-family: var(--serif);
+      font-weight: 700; font-size: 15px;
+      letter-spacing: 0.04em;
+      flex-shrink: 0;
+    }
+    .brand-text strong {
+      display: block;
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+    }
+    .brand-text span {
+      display: block;
+      font-size: 12px;
+      opacity: 0.88;
+      margin-top: 1px;
+    }
+    nav.top { display: flex; gap: 1.4rem; flex-wrap: wrap; }
+    nav.top a {
+      color: #fff;
+      font-size: 13.5px;
+      font-weight: 500;
+      opacity: 0.92;
+      padding: 0.25rem 0;
+      border-bottom: 2px solid transparent;
+    }
+    nav.top a:hover,
+    nav.top a[aria-current="page"] {
+      opacity: 1;
+      text-decoration: none;
+      border-bottom-color: #fecaca;
+    }
+
+    /* Hero search */
+    .hero {
+      background:
+        radial-gradient(900px 320px at 12% -10%, rgba(153, 27, 27, 0.09), transparent 60%),
+        linear-gradient(180deg, #fff 0%, var(--bg) 100%);
+      border-bottom: 1px solid var(--line);
+      padding: 2.4rem 0 2rem;
+    }
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(1.55rem, 2.6vw, 2rem);
+      margin: 0 0 0.35rem;
+      letter-spacing: -0.01em;
+    }
+    .hero p.lead {
+      margin: 0 0 1.35rem;
+      color: var(--muted);
+      max-width: 54ch;
+      font-size: 15px;
+    }
+    .search-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 0.85rem;
+    }
+    .search-row { display: flex; gap: 0.55rem; flex-wrap: wrap; }
+    .search-row select {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #f8fafc;
+      color: var(--ink);
+      font: inherit;
+      font-size: 13.5px;
+      padding: 0.7rem 0.85rem;
+      min-width: 9.5rem;
+      cursor: pointer;
+    }
+    .search-row input[type="search"] {
+      flex: 1 1 220px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 0.75rem 1rem;
+      font: inherit;
+      font-size: 15px;
+      min-width: 0;
+    }
+    .search-row input[type="search"]:focus,
+    .search-row select:focus {
+      outline: 2px solid rgba(153, 27, 27, 0.35);
+      outline-offset: 1px;
+    }
+    .search-row button {
+      background: var(--crimson);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 0 1.4rem;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      min-height: 46px;
+      transition: background 0.15s ease;
+    }
+    .search-row button:hover { background: var(--crimson-600); }
+    .search-meta {
+      display: flex;
+      gap: 0.75rem 1.25rem;
+      flex-wrap: wrap;
+      margin-top: 0.7rem;
+      padding: 0 0.25rem;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .chips { display: flex; gap: 0.45rem; flex-wrap: wrap; margin-top: 1rem; }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--navy-2);
+      border-radius: 999px;
+      padding: 0.35rem 0.8rem;
+      font-size: 12.5px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: border-color 0.15s ease, color 0.15s ease;
+    }
+    .chip:hover {
+      border-color: var(--crimson);
+      color: var(--crimson);
+      text-decoration: none;
+    }
+    .chip .dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--crimson);
+      opacity: 0.7;
+    }
+
+    /* Content grid */
+    main { flex: 1; padding: 2rem 0 3rem; }
+    .grid {
+      display: grid;
+      grid-template-columns: 1.45fr 1fr;
+      gap: 1.25rem;
+      align-items: start;
+    }
+    @media (max-width: 860px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+    .panel {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+      overflow: hidden;
+    }
+    .panel-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.75rem;
+      padding: 1rem 1.15rem 0.75rem;
+      border-bottom: 1px solid var(--line);
+    }
+    .panel-head h2 {
+      margin: 0;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+    }
+    .panel-head .more { font-size: 12.5px; font-weight: 500; }
+    .panel-body { padding: 0.35rem 1.15rem 1.1rem; }
+
+    .stat-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+      padding: 1rem 1.15rem 1.15rem;
+    }
+    .stat {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 0.85rem 0.9rem;
+      background: linear-gradient(180deg, #fff, #f8fafc);
+    }
+    .stat b {
+      display: block;
+      font-family: var(--serif);
+      font-size: 1.35rem;
+      color: var(--crimson);
+      line-height: 1.1;
+    }
+    .stat span {
+      display: block;
+      margin-top: 0.2rem;
+      font-size: 11.5px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .result {
+      padding: 0.85rem 0;
+      border-bottom: 1px dashed var(--line);
+    }
+    .result:last-child { border-bottom: none; }
+    .result a.title {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 15.5px;
+      color: var(--navy);
+      line-height: 1.35;
+    }
+    .result a.title:hover { color: var(--crimson); }
+    .result .meta {
+      margin-top: 0.25rem;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .result .shelf {
+      margin-top: 0.4rem;
+      display: flex;
+      gap: 0.5rem 0.85rem;
+      flex-wrap: wrap;
+      font-family: ui-monospace, "Cascadia Mono", monospace;
+      font-size: 11.5px;
+      color: #475569;
+      letter-spacing: 0.02em;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      border-radius: 999px;
+      padding: 0.15rem 0.55rem;
+      font-weight: 600;
+      font-size: 10.5px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .badge.avail { background: var(--teal-100); color: #155e75; }
+    .badge.out { background: #f1f5f9; color: #475569; }
+
+    .hours-list { list-style: none; margin: 0; padding: 0; }
+    .hours-list li {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.55rem 0;
+      border-bottom: 1px dashed var(--line);
+      font-size: 13.5px;
+    }
+    .hours-list li:last-child { border-bottom: none; }
+    .hours-list .day { font-weight: 500; }
+    .hours-list .time {
+      font-family: ui-monospace, "Cascadia Mono", monospace;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .hours-list li.today { color: var(--crimson); }
+    .hours-list li.today .time { color: var(--crimson); font-weight: 600; }
+
+    .note {
+      margin-top: 0.9rem;
+      padding: 0.75rem 0.9rem;
+      border-radius: 10px;
+      background: #fffbeb;
+      border: 1px solid #fde68a;
+      font-size: 12.5px;
+      color: #92400e;
+    }
+
+    .contact { font-size: 13.5px; color: var(--muted); }
+    .contact p { margin: 0 0 0.55rem; }
+    .contact strong { color: var(--ink); }
+
+    /* Footer */
+    footer {
+      background: var(--navy);
+      color: #94a3b8;
+      padding: 1.6rem 0 2rem;
+      font-size: 13px;
+    }
+    footer .wrap {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: start;
+    }
+    footer strong { color: #e2e8f0; display: block; margin-bottom: 0.35rem; }
+    footer a { color: #cbd5e1; }
+  </style>
+</head>
+<body>
+  <div class="utility">
+    <div class="wrap">
+      <span class="mono">OPAC · Central Library · Gandhinagar</span>
+      <span>
+        <a href="https://catalog.nfsu.ac.in" target="_blank" rel="noopener">catalog.nfsu.ac.in</a>
+        &nbsp;·&nbsp;
+        <a href="mailto:library@nfsu.ac.in">library@nfsu.ac.in</a>
+      </span>
+    </div>
+  </div>
+
+  <header class="masthead">
+    <div class="wrap">
+      <a class="brand" href="#">
+        <div class="seal" aria-hidden="true">NFSU</div>
+        <div class="brand-text">
+          <strong>National Forensic Sciences University</strong>
+          <span>Central Library &amp; Knowledge Resource Centre</span>
+        </div>
+      </a>
+      <nav class="top" aria-label="Primary">
+        <a href="#" aria-current="page">Catalogue</a>
+        <a href="https://catalog.nfsu.ac.in/cgi-bin/koha/opac-search.pl?idx=se&amp;q=theses" target="_blank" rel="noopener">Theses</a>
+        <a href="https://catalog.nfsu.ac.in/cgi-bin/koha/opac-detail.pl?biblionumber=1" target="_blank" rel="noopener">New arrivals</a>
+        <a href="#hours">Hours</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="wrap">
+      <h1>Search the library catalogue</h1>
+      <p class="lead">
+        Books, theses, reports and standards from the NFSU Central Library.
+        Ask the Library Assistant (bottom-right) in English or Hindi for help finding materials.
+      </p>
+
+      <form class="search-card" id="opac-search" action="https://catalog.nfsu.ac.in/cgi-bin/koha/opac-search.pl" method="get" target="_blank" rel="noopener">
+        <div class="search-row">
+          <select name="idx" aria-label="Search index">
+            <option value="" selected>All fields</option>
+            <option value="ti">Title</option>
+            <option value="au">Author</option>
+            <option value="su">Subject</option>
+            <option value="nb">ISBN</option>
+            <option value="callnum">Call number</option>
+          </select>
+          <input type="search" name="q" placeholder="e.g. forensic DNA analysis, Pipara, 9789364556255" aria-label="Search terms" required />
+          <input type="hidden" name="weight_search" value="1" />
+          <button type="submit">Search</button>
+        </div>
+        <div class="search-meta">
+          <span>Indexes: keyword · title · author · subject · ISBN · call number</span>
+          <span>Live results from KOHA OPAC</span>
+        </div>
+      </form>
+
+      <div class="chips" aria-label="Popular subjects">
+        <a class="chip" href="https://catalog.nfsu.ac.in/cgi-bin/koha/opac-search.pl?q=forensic+science&amp;weight_search=1" target="_blank" rel="noopener"><span class="dot"></span>Forensic science</a>
+        <a class="chip" href="https://catalog.nfsu.ac.in/cgi-bin/koha/opac-search.pl?q=cybercrime&amp;weight_search=1" target="_blank" rel="noopener"><span class="dot"></span>Cybercrime</a>
+        <a class="chip" href="https://catalog.nfsu.ac.in/cgi-bin/koha/opac-search.pl?q=digital+evidence&amp;weight_search=1" target="_blank" rel="noopener"><span class="dot"></span>Digital evidence</a>
+        <a class="chip" href="https://catalog.nfsu.ac.in/cgi-bin/koha/opac-search.pl?q=toxicology&amp;weight_search=1" target="_blank" rel="noopener"><span class="dot"></span>Toxicology</a>
+        <a class="chip" href="https://catalog.nfsu.ac.in/cgi-bin/koha/opac-search.pl?q=questioned+document&amp;weight_search=1" target="_blank" rel="noopener"><span class="dot"></span>Questioned documents</a>
+        <a class="chip" href="https://catalog.nfsu.ac.in/cgi-bin/koha/opac-search.pl?q=DNA+profiling&amp;weight_search=1" target="_blank" rel="noopener"><span class="dot"></span>DNA profiling</a>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <div class="wrap grid">
+      <section class="panel" aria-labelledby="featured-heading">
+        <div class="panel-head">
+          <h2 id="featured-heading">Featured in the collection</h2>
+          <a class="more" href="https://catalog.nfsu.ac.in/cgi-bin/koha/opac-search.pl?q=forensic&amp;weight_search=1" target="_blank" rel="noopener">Browse all →</a>
+        </div>
+        <div class="panel-body">
+          <article class="result">
+            <a class="title" href="https://catalog.nfsu.ac.in/cgi-bin/koha/opac-search.pl?q=forensic+DNA+analysis&amp;weight_search=1" target="_blank" rel="noopener">Forensic DNA analysis : techniques and applications</a>
+            <div class="meta">Pilli Elena · 2021</div>
+            <div class="shelf">
+              <span class="badge avail">Available</span>
+              <span>614.1/ELE · NFSU Gandhinagar</span>
+            </div>
+          </article>
+          <article class="result">
+            <a class="title" href="https://catalog.nfsu.ac.in/cgi-bin/koha/opac-search.pl?q=cybercrime&amp;weight_search=1" target="_blank" rel="noopener">Cybercrime : a reference handbook</a>
+            <div class="meta">Thomas J. Holt · Contemporary world issues</div>
+            <div class="shelf">
+              <span class="badge avail">Available</span>
+              <span>Forensic science · NFSU Library</span>
+            </div>
+          </article>
+          <article class="result">
+            <a class="title" href="https://catalog.nfsu.ac.in/cgi-bin/koha/opac-search.pl?q=questioned+document&amp;weight_search=1" target="_blank" rel="noopener">Forensic document examination</a>
+            <div class="meta">Koppenhaver · 363.2565</div>
+            <div class="shelf">
+              <span class="badge avail">Available</span>
+              <span>363.2565/KOP · NFSU Gandhinagar</span>
+            </div>
+          </article>
+          <article class="result">
+            <a class="title" href="https://catalog.nfsu.ac.in/cgi-bin/koha/opac-search.pl?q=digital+evidence&amp;weight_search=1" target="_blank" rel="noopener">Digital evidence and cyber crime : forensic methods</a>
+            <div class="meta">NFSU / forensic computing collection</div>
+            <div class="shelf">
+              <span class="badge avail">Available</span>
+              <span>Digital forensics · NFSU Library</span>
+            </div>
+          </article>
+        </div>
+        <div class="stat-row">
+          <div class="stat"><b>50k+</b><span>Bibliographic records</span></div>
+          <div class="stat"><b>EN · हिं</b><span>Assistant languages</span></div>
+          <div class="stat"><b>24×7</b><span>Online catalogue</span></div>
+        </div>
+      </section>
+
+      <div style="display:grid; gap:1.25rem;">
+        <section class="panel" id="hours" aria-labelledby="hours-heading">
+          <div class="panel-head">
+            <h2 id="hours-heading">Library hours</h2>
+            <span class="more" style="color:var(--muted)">IST</span>
+          </div>
+          <div class="panel-body">
+            <ul class="hours-list" id="hours-list">
+              <li data-day="1"><span class="day">Monday – Friday</span><span class="time">09:00 – 20:00</span></li>
+              <li data-day="6"><span class="day">Saturday</span><span class="time">09:00 – 17:00</span></li>
+              <li data-day="0"><span class="day">Sunday</span><span class="time">Closed · reference desk only</span></li>
+            </ul>
+            <div class="note">
+              Circulation desk closes 30 minutes before the library. Valid ID card required for entry.
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="contact" aria-labelledby="contact-heading">
+          <div class="panel-head">
+            <h2 id="contact-heading">Need help?</h2>
+          </div>
+          <div class="panel-body contact">
+            <p><strong>Ask the Library Assistant</strong> — click the red chat bubble at the bottom-right. Search books, check availability, or ask about rules in English or Hindi.</p>
+            <p><strong>Reference desk</strong> · Central Library, NFSU Campus, Gandhinagar</p>
+            <p><strong>Email</strong> · <a href="mailto:library@nfsu.ac.in">library@nfsu.ac.in</a></p>
+            <p><strong>OPAC</strong> · <a href="https://catalog.nfsu.ac.in" target="_blank" rel="noopener">catalog.nfsu.ac.in</a></p>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div>
+        <strong>National Forensic Sciences University</strong>
+        Central Library &amp; Knowledge Resource Centre<br />
+        Gandhinagar, Gujarat, India
+      </div>
+      <div>
+        Catalogue powered by KOHA<br />
+        <a href="https://catalog.nfsu.ac.in" target="_blank" rel="noopener">Open full OPAC</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Highlight today's hours row
+    (function () {
+      var d = new Date().getDay();
+      var li = document.querySelector('#hours-list li[data-day="' + d + '"]');
+      if (!li && d >= 1 && d <= 5) li = document.querySelector('#hours-list li[data-day="1"]');
+      if (li) li.classList.add("today");
+    })();
+  </script>
+
+  <!-- NFSU Library Assistant widget -->
+  <script
+    src="../widget/dist/nfsu-chatbot.js"
+    data-api-base="http://127.0.0.1:8000"
+    data-opac-base="https://catalog.nfsu.ac.in"
+    data-locale="en"
+    data-theme="system"
+  ></script>
+</body>
+</html>

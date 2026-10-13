@@ -1,0 +1,91 @@
+{
+  "locale": "en",
+  "intents": [
+    {
+      "id": "timings",
+      "keywords": ["timing", "timings", "hours", "open", "opening", "closing", "close", "schedule", "when does", "what time", "calendar", "holiday", "closed today"],
+      "answer": "The NFSU Library is generally open on working days from 9:00 AM to 8:00 PM and on Saturdays from 9:00 AM to 5:00 PM. Sunday and gazetted holidays follow the university calendar. Please confirm today's status at the circulation desk or on the library homepage before visiting.",
+      "links": [{"label": "Library homepage", "url": "https://nfsu.ac.in"}]
+    },
+    {
+      "id": "circulation_rules",
+      "keywords": ["circulation", "borrow", "borrowing", "loan", "issue", "return", "renew", "renewal", "due date", "fine", "fines", "overdue", "rules", "rule", "policy", "policies", "guidelines", "how many books", "books can i"],
+      "answer": "Circulation rules vary by user category. Students and research scholars can generally borrow a limited number of books for two weeks, renewable if no one else has requested them. Faculty members receive longer loan periods. Overdue books attract fines as per the library policy. Please bring your valid ID card for all transactions.",
+      "links": [{"label": "KOHA OPAC — your loans", "url": "https://catalog.nfsu.ac.in"}]
+    },
+    {
+      "id": "membership",
+      "keywords": ["membership", "register", "registration", "enroll", "card", "id card", "become a member", "join", "eligibility", "borrower"],
+      "answer": "All currently enrolled NFSU students, research scholars, and faculty are library members automatically through their institutional record. Visitors and collaborators can apply for temporary membership at the library counter with a valid institutional request. Your NFSU ID card is your library card.",
+      "links": []
+    },
+    {
+      "id": "onos",
+      "keywords": ["onos", "subscription", "digital resource", "e-resource", "ejournal", "e-journal", "database", "online resource", "access online", "remote access", "off campus", "off-campus", "vpn", "remote"],
+      "answer": "ONOS (One Nation One Subscription) gives NFSU users access to a large consortium of e-journals, e-books, and databases. On campus, access is automatic by IP. Off campus, sign in through the ONOS portal with your institutional credentials, or use the library's VPN guidance if provided. If a resource asks for payment, you are likely outside the institutional access path.",
+      "links": [{"label": "ONOS portal", "url": "https://onos.in"}, {"label": "KOHA OPAC", "url": "https://catalog.nfsu.ac.in"}]
+    },
+    {
+      "id": "research_databases",
+      "keywords": ["research database", "scopus", "web of science", "ieee", "springer", "elsevier", "scienceDirect", "jstor", "database access", "which database", "scholarly", "article search"],
+      "answer": "NFSU users can access major scholarly databases such as Scopus, Web of Science, IEEE Xplore, SpringerLink, ScienceDirect, and JSTOR through institutional subscriptions. Availability differs by campus and programme. Start from the library's digital resources page or ONOS for authenticated access.",
+      "links": [{"label": "ONOS portal", "url": "https://onos.in"}]
+    },
+    {
+      "id": "citation_tools",
+      "keywords": ["citation", "cite", "referencing", "bibliography", "zotero", "mendeley", "endnote", "apa", "harvard", "plagiarism", "turnitin"],
+      "answer": "The library supports citation management through tools like Zotero, Mendeley, and EndNote, and provides guidance on APA, Harvard, and other common styles. For plagiarism checking, use the institutionally provided similarity tool where available. Ask at the research support desk for a hands-on walkthrough.",
+      "links": []
+    },
+    {
+      "id": "thesis_dissertation",
+      "keywords": ["thesis", "dissertation", "phd", "research scholar", "submit thesis", "etd", "previous theses", "past dissertations"],
+      "answer": "Completed theses and dissertations are listed in the KOHA catalogue and may also be available through the institutional repository. Research scholars can consult past submissions for literature review. Thesis submission follows the examination cell's format and deadline rules — confirm the current checklist with your school before submitting.",
+      "links": [{"label": "Search theses in KOHA", "url": "https://catalog.nfsu.ac.in/opac-search.pl?q=thesis"}]
+    },
+    {
+      "id": "interlibrary",
+      "keywords": ["inter library", "interlibrary", "ill", "borrow from another", "other campus", "delivery", "document delivery", "photocopy", "scanning"],
+      "answer": "Inter-library loan and document delivery requests can be placed at the circulation desk or by email. Requests usually take a few working days depending on the supplying library. Scanned copies of permitted pages may be arranged for research use.",
+      "links": []
+    },
+    {
+      "id": "services",
+      "keywords": ["service", "services", "what can you do", "help me", "facilities", "wifi", "printing", "scanner", "reading room", "study room", "reserve"],
+      "answer": "Besides catalogue search, the library offers reading spaces, printing and scanning, Wi-Fi, research assistance, database training, and guidance on referencing and research communication. Tell me what you are trying to do and I will point you to the right service.",
+      "links": []
+    },
+    {
+      "id": "contact",
+      "keywords": ["contact", "librarian", "email", "phone", "address", "reach you", "help desk", "ask a human", "speak to", "talk to"],
+      "answer": "You can reach the library team at the main service desk during library hours, or through the contact details on the NFSU library webpage. For complex research questions, ask for a reference librarian — they can help you search databases and refine your topic.",
+      "links": [{"label": "NFSU contact page", "url": "https://nfsu.ac.in"}]
+    }
+  ],
+  "greetings": {
+    "en": [
+      "Hello! I am the NFSU Library assistant. Ask me for books, journals, theses, or library services.",
+      "Welcome to the NFSU Library chat. What can I help you find today?"
+    ],
+    "hi": [
+      "नमस्ते! मैं NFSU पुस्तकालय सहायक हूँ। किताबें, पत्रिकाएँ, शोध प्रबंध या पुस्तकालय सेवाओं के बारे में पूछें।",
+      "NFSU पुस्तकालय चैट में आपका स्वागत है। आज मैं आपकी क्या सहायता कर सकता हूँ?"
+    ]
+  },
+  "fallbacks": {
+    "en": {
+      "no_results": "Hmm, I could not find an exact match for that in our stacks right now. Try broadening the keywords, or browse the KOHA advanced search directly. Need help from a librarian? The service desk is ready to assist.",
+      "llm_down": "I am having trouble reaching my language engine at the moment, so I will stick to catalogue search and library information. Try asking about a book title, author, or library service.",
+      "injection_blocked": "I can only help with NFSU library resources and services. Please ask about books, journals, theses, or library support.",
+      "rate_limited": "You are sending questions very quickly. Please wait a moment and try again.",
+      "error": "Something went wrong while processing that. Please try again, or search the KOHA catalogue directly."
+    },
+    "hi": {
+      "no_results": "हम्म, इस समय हमारे संग्रह में इसका सटीक मिलान नहीं मिला। कीवर्ड बदलकर देखें, या KOHA उन्नत खोज सीधे खोलें। सहायता चाहिए? सेवा डेस्क आपकी मदद के लिए उपलब्ध है।",
+      "llm_down": "अभी भाषा इंजन से जुड़ने में समस्या हो रही है, इसलिए मैं कैटलॉग खोज और पुस्तकालय जानकारी तक सीमित रहूँगा। किसी पुस्तक का शीर्षक, लेखक या पुस्तकालय सेवा के बारे में पूछें।",
+      "injection_blocked": "मैं केवल NFSU पुस्तकालय संसाधनों और सेवाओं में सहायता कर सकता हूँ। कृपया पुस्तकों, पत्रिकाओं, शोध प्रबंधों या पुस्तकालय सहायता के बारे में पूछें।",
+      "rate_limited": "आप बहुत तेज़ी से प्रश्न भेज रहे हैं। कृपया एक क्षण प्रतीक्षा करें और पुनः प्रयास करें।",
+      "error": "उसे संसाधित करते समय कुछ गलत हो गया। कृपया पुनः प्रयास करें, या KOHA कैटलॉग में सीधे खोजें।"
+    }
+  }
+}
